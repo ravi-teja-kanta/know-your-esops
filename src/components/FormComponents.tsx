@@ -12,7 +12,7 @@ export const MultiChoiceTowerComponent = styled.div`
     /* align-items: flex-start; */
     padding-left: 6%;
     @media (max-width: 400px) {
-        padding-left: 1%;
+        padding: 10px;
     }
 `;
  export const RadioButtonTowerComponent = styled.div`
@@ -23,6 +23,9 @@ export const MultiChoiceTowerComponent = styled.div`
         justify-content: space-between;
         @media (min-width: 500px) {
             width: 20%;
+        }
+        @media (max-width: 400px) {
+            /* padding-left: 0; */
         }
         /* height: 100%; */
     `;
@@ -41,6 +44,7 @@ export const MediaComponent = styled.div`
 export const Logo = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 25px;
+    /* padding: 10px; */
+    justify-content: center;
     flex-wrap: wrap;
 `;

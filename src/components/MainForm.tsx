@@ -3,7 +3,7 @@ import { Form, SubmitButton } from "formik-antd"
 import styled from "styled-components"
 import { handleSubmit } from "../Utils"
 import { MultiChoiceTowerComponent, RadioButtonTowerComponent, MediaComponent, Logo } from "./FormComponents"
-import { QuestionHorizontal, DropDown, DropDownOption, QuestionVertical, MultiOption, MultiOptionButton, Text, TweetContainer, ImageContainer, GetScoreButton, LogoText, Mediatext } from "./SubComponents"
+import { QuestionHorizontal, DropDown, DropDownOption, QuestionVertical, MultiOption, MultiOptionButton, Text, TweetContainer, ImageContainer, GetScoreButton, LogoText, Mediatext, HeaderImageContainer } from "./SubComponents"
 import {TwitterTweetEmbed, TwitterShareButton} from 'react-twitter-embed';
 import asset from "../assets/asset1.png"
 import logo from "../assets/logo_1.png"
@@ -28,15 +28,13 @@ const MainForm =  () => {
         >
             <Form>
                 <Logo>
+                    <HeaderImageContainer>
+                        <img src={asset}/>
+                    </HeaderImageContainer>
                     <ImageContainer>
                         <img src={logo}/>
                     </ImageContainer>
-                    <LogoText>Evaluate your company's ESOPs Policy</LogoText>
-                    <Text>Share this tool: </Text>
-                    <TwitterShareButton
-                        url={window.location.href}
-                        options={{ text: 'Check out this tool to evaluate ESOP Policies', via: 'beingPractical' }}
-                    />
+                    <LogoText>Find out how good/bad your company's ESOPs policy is.</LogoText>
                 </Logo>
             <MainForm>
                 <MultiChoiceTowerComponent>
@@ -81,9 +79,9 @@ const MainForm =  () => {
                             // style={{padding: 5, minWidth: '70%'}}
                             placeholder="Choose"
                         >
-                            <DropDownOption value={0}>10 + 15 + 20 + 25 + 30</DropDownOption>
-                            <DropDownOption value={1}>10 + 15 + 20 + 25 + 30</DropDownOption>
-                            <DropDownOption value={2}>25 + 25 + 25 + 25</DropDownOption>
+                            <DropDownOption value={0}>10+15+20+25+30</DropDownOption>
+                            <DropDownOption value={1}>10+15+20+25+30</DropDownOption>
+                            <DropDownOption value={2}>25+25+25+25</DropDownOption>
                             <DropDownOption value={3}>25 + then every month</DropDownOption>
                         </DropDown>
                     </QuestionHorizontal>
@@ -231,15 +229,22 @@ const MainForm =  () => {
                     <GetScoreButton>Get Score</GetScoreButton>
                 </RadioButtonTowerComponent>
                 <MediaComponent>
-                    <Mediatext>This score is based on the viral tweet: </Mediatext>
+                    {/* <LogoText>Evaluate your company's ESOPs Policy</LogoText> */}
+                    {/* <Text>Share this tool: </Text>
+                    <TwitterShareButton
+                        url={window.location.href}
+                        options={{ text: 'Check out this tool to evaluate ESOP Policies', via: 'beingPractical' }}
+                    /> */}
+                    <Mediatext>What is the basis of this scoring ?</Mediatext>
                     <TweetContainer>
                         <TwitterTweetEmbed
                             tweetId={'1363352214559891456'}
+                            style={{margin:'1'}}
                         />
                     </TweetContainer>
-                    <ImageContainer>
+                    {/* <ImageContainer>
                         <img src={asset}/>
-                    </ImageContainer>
+                    </ImageContainer> */}
                 </MediaComponent>
                 </MainForm>
             </Form>
