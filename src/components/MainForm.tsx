@@ -2,8 +2,11 @@ import { Formik } from "formik"
 import { Form, SubmitButton } from "formik-antd"
 import styled from "styled-components"
 import { handleSubmit } from "../Utils"
-import { MultiChoiceTowerComponent, RadioButtonTowerComponent, MediaComponent } from "./FormComponents"
-import { QuestionHorizontal, DropDown, DropDownOption, QuestionVertical, MultiOption, MultiOptionButton, Text } from "./SubComponents"
+import { MultiChoiceTowerComponent, RadioButtonTowerComponent, MediaComponent, Logo } from "./FormComponents"
+import { QuestionHorizontal, DropDown, DropDownOption, QuestionVertical, MultiOption, MultiOptionButton, Text, TweetContainer, ImageContainer, GetScoreButton, LogoText, Mediatext } from "./SubComponents"
+import {TwitterTweetEmbed, TwitterShareButton} from 'react-twitter-embed';
+import asset from "../assets/asset1.png"
+import logo from "../assets/logo_1.png"
 
 const MainForm =  () => {
     const MainForm = styled.div`
@@ -24,13 +27,24 @@ const MainForm =  () => {
             onSubmit={handleSubmit}
         >
             <Form>
+                <Logo>
+                    <ImageContainer>
+                        <img src={logo}/>
+                    </ImageContainer>
+                    <LogoText>Evaluate your company's ESOPs Policy</LogoText>
+                    <Text>Share this tool: </Text>
+                    <TwitterShareButton
+                        url={window.location.href}
+                        options={{ text: 'Check out this tool to evaluate ESOP Policies', via: 'beingPractical' }}
+                    />
+                </Logo>
             <MainForm>
                 <MultiChoiceTowerComponent>
                     <QuestionHorizontal>
                         <Text>1. ESOPs are for</Text>
                         <DropDown
                             name="esops_for"
-                            placeholder="Select"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>Adhoc</DropDownOption>
                             <DropDownOption value={1}>Key People</DropDownOption>
@@ -42,7 +56,7 @@ const MainForm =  () => {
                         <Text>2. Vesting Period is </Text>
                         <DropDown
                             name="vesting_period"
-                            placeholder="Select"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>5 years or beyond</DropDownOption>
                             <DropDownOption value={1}>4 years</DropDownOption>
@@ -78,7 +92,7 @@ const MainForm =  () => {
                         <DropDown
                             name="vesting_start"
                             // style={{padding: 5, minWidth: '70%'}}
-                            placeholder="choose"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>1 Year after joining</DropDownOption>
                             <DropDownOption value={1}>On Allotment Date</DropDownOption>
@@ -90,7 +104,7 @@ const MainForm =  () => {
                         <DropDown
                             name="vesting_on_leave"
                             // style={{padding: 5, minWidth: '70%'}}
-                            placeholder="choose"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>Clawback Terms</DropDownOption>
                             <DropDownOption value={1}>Vested Options</DropDownOption>
@@ -101,7 +115,7 @@ const MainForm =  () => {
                         <DropDown
                             name="vesting_on_exit"
                             // style={{padding: 5, minWidth: '70%'}}
-                            placeholder="choose"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>Only Vested</DropDownOption>
                             <DropDownOption value={1}>Accelerated Vesting</DropDownOption>
@@ -112,7 +126,7 @@ const MainForm =  () => {
                         <DropDown
                             name="vesting_on_death"
                             // style={{padding: 5, minWidth: '70%'}}
-                            placeholder="choose"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>Clawback</DropDownOption>
                             <DropDownOption value={1}>Only Vested</DropDownOption>
@@ -125,7 +139,7 @@ const MainForm =  () => {
                         <DropDown
                             name="strike"
                             // style={{padding: 5, minWidth: '70%'}}
-                            placeholder="choose"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>At share price</DropDownOption>
                             <DropDownOption value={1}>At reasonable price</DropDownOption>
@@ -137,7 +151,7 @@ const MainForm =  () => {
                         <DropDown
                             name="exercise_period"
                             // style={{padding: 5, minWidth: '70%'}}
-                            placeholder="choose"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>30 to 90 days</DropDownOption>
                             <DropDownOption value={1}>up to 1 year</DropDownOption>
@@ -150,7 +164,7 @@ const MainForm =  () => {
                         <DropDown
                             name="esops_com"
                             // style={{padding: 5, minWidth: '70%'}}
-                            placeholder="choose"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>Verbal</DropDownOption>
                             <DropDownOption value={1}>Signed/ Written Docs</DropDownOption>
@@ -162,7 +176,7 @@ const MainForm =  () => {
                         <DropDown
                             name="holding"
                             // style={{padding: 5, minWidth: '70%'}}
-                            placeholder="choose"
+                            placeholder="Choose"
                         >
                             <DropDownOption value={0}>{"< 1 year"}</DropDownOption>
                             <DropDownOption value={1}>1 to 3 years</DropDownOption>
@@ -214,9 +228,19 @@ const MainForm =  () => {
                             <MultiOptionButton value={2}> No</MultiOptionButton >
                         </MultiOption>
                     </QuestionVertical>
-                    <SubmitButton>Get Score</SubmitButton>
+                    <GetScoreButton>Get Score</GetScoreButton>
                 </RadioButtonTowerComponent>
-                <MediaComponent></MediaComponent>
+                <MediaComponent>
+                    <Mediatext>This score is based on the viral tweet: </Mediatext>
+                    <TweetContainer>
+                        <TwitterTweetEmbed
+                            tweetId={'1363352214559891456'}
+                        />
+                    </TweetContainer>
+                    <ImageContainer>
+                        <img src={asset}/>
+                    </ImageContainer>
+                </MediaComponent>
                 </MainForm>
             </Form>
         </Formik>
