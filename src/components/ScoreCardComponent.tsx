@@ -19,16 +19,16 @@ const TweetScoreContainer = styled.div`
 `
 const ScoreCard = (props: ScoreCardProps) => {
     // @ts-ignore
-    const finalScore = Number(Object.values(props.values).reduce((p: number, c: number) => p + c, 0));
-    const score = ((finalScore/32)*100).toPrecision(1);
+    const finalScore = Number.parseInt(Object.values(props.values).reduce((p: number, c: number) => p + c, 0));
+    const score = Math.ceil((finalScore/32)*100);
     const isFormIncomplete = Object.keys(props.values).length != 18;
     return (
         <ScoreCardContainer>
             <Title>Final Score</Title>
             
-            <Statistic title="ESOP Score" value={score} precision={0} suffix="%"/>
+            <Statistic title="ESOP Score" value={score} suffix="%"/>
             
-            <Text type={"success"} style={{fontSize: 15}}>% match to the best ESOP Policy possible.</Text>
+            <Text type={"success"} style={{fontSize: 13}}>% match to the best ESOP Policy possible.</Text>
             {
                 isFormIncomplete &&
                 <Text type={"warning"} style={{fontSize: 12}}>*Fill ALL the fields for more accurate score.</Text>
