@@ -2,19 +2,25 @@ import { Formik } from "formik"
 import { Form, SubmitButton } from "formik-antd"
 import styled from "styled-components"
 import { handleSubmit } from "../Utils"
-import { MultiChoiceTowerComponent, RadioButtonTowerComponent, MediaComponent, Logo } from "./FormComponents"
-import { QuestionHorizontal, DropDown, DropDownOption, QuestionVertical, MultiOption, MultiOptionButton, Text, TweetContainer, ImageContainer, GetScoreButton, LogoText, Mediatext, HeaderImageContainer } from "./SubComponents"
+import { MultiChoiceTowerComponent, RadioButtonTowerComponent, Logo } from "./FormComponents"
+import { QuestionHorizontal, DropDown, DropDownOption, QuestionVertical, MultiOption, MultiOptionButton, Text, ImageContainer, GetScoreButton, LogoText, HeaderImageContainer } from "./SubComponents"
 import {TwitterTweetEmbed, TwitterShareButton} from 'react-twitter-embed';
 import asset from "../assets/asset1.png"
-import logo from "../assets/logo_1.png"
+import logo from "../assets/logo_1.png";
+import mainIllust from "../assets/main_illustration1.svg";
+import MediaComponent from "./MediaComponent";
+import { Typography, Space, Card } from "antd";
+import Meta from "antd/lib/card/Meta"
+const {Title, Text: Txt} = Typography;
 
 const MainForm =  () => {
     const MainForm = styled.div`
         display: flex;
         flex-direction: row;
         padding: 5px;
-        width: 100%;
-        height:100%;
+        /* max-width: 501px; */
+        /* width: 100%; */
+        /* height:100%; */
         justify-content:space-around;
         @media (max-width: 500px) {
             flex-direction: column;
@@ -27,19 +33,26 @@ const MainForm =  () => {
             onSubmit={handleSubmit}
         >
             <Form>
-                <Logo>
-                    <HeaderImageContainer>
-                        <img src={asset}/>
-                    </HeaderImageContainer>
-                    <ImageContainer>
-                        <img src={logo}/>
-                    </ImageContainer>
-                    <LogoText>Find out how good/bad your company's ESOPs policy is.</LogoText>
-                </Logo>
+                    <Logo>
+                        {/* <ImageContainer>
+                            <img src={logo}/>
+                        </ImageContainer> */}
+                        {/* <HeaderImageContainer>
+                            
+                        </HeaderImageContainer> */}
+                        <Card
+                            cover={<img src={mainIllust}/>}
+                            bordered={false}
+                        >
+                        </Card>
+                        <LogoText bordered={false}>
+                            <Title level={3}>Find out how good (or bad) your company's ESOP policy is.</Title>
+                        </LogoText>
+                    </Logo>
             <MainForm>
-                <MultiChoiceTowerComponent>
+                <MultiChoiceTowerComponent bordered={false}>
                     <QuestionHorizontal>
-                        <Text>1. ESOPs are for</Text>
+                        <Text>ESOPs are given to</Text>
                         <DropDown
                             name="esops_for"
                             placeholder="Choose"
@@ -51,7 +64,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>2. Vesting Period is </Text>
+                        <Text>Vesting Period is </Text>
                         <DropDown
                             name="vesting_period"
                             placeholder="Choose"
@@ -61,7 +74,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>3. ESOPs pool size</Text>
+                        <Text>ESOPs pool size</Text>
                         <DropDown
                             name="pool_size"
                             placeholder="Choose"
@@ -73,7 +86,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>4. Vesting Schedule %</Text>
+                        <Text>Vesting Schedule %</Text>
                         <DropDown
                             name="vesting_schedule"
                             // style={{padding: 5, minWidth: '70%'}}
@@ -86,7 +99,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>5. Vesting starts on</Text>
+                        <Text>Vesting starts on</Text>
                         <DropDown
                             name="vesting_start"
                             // style={{padding: 5, minWidth: '70%'}}
@@ -98,7 +111,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>6. Vesting on leaving startup</Text>
+                        <Text>Vesting on leaving startup</Text>
                         <DropDown
                             name="vesting_on_leave"
                             // style={{padding: 5, minWidth: '70%'}}
@@ -109,7 +122,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>7. Vesting on Startup's exit</Text>
+                        <Text>Vesting on Startup's exit</Text>
                         <DropDown
                             name="vesting_on_exit"
                             // style={{padding: 5, minWidth: '70%'}}
@@ -120,7 +133,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>8. Vesting on death/disability</Text>
+                        <Text>Vesting on death/disability</Text>
                         <DropDown
                             name="vesting_on_death"
                             // style={{padding: 5, minWidth: '70%'}}
@@ -133,7 +146,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>9. Strike / Exercise Price</Text>
+                        <Text>Strike / Exercise Price</Text>
                         <DropDown
                             name="strike"
                             // style={{padding: 5, minWidth: '70%'}}
@@ -145,7 +158,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>10. Exercise period on leaving org</Text>
+                        <Text>Exercise period on leaving org</Text>
                         <DropDown
                             name="exercise_period"
                             // style={{padding: 5, minWidth: '70%'}}
@@ -158,7 +171,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>11. ESOPs Communication</Text>
+                        <Text>ESOPs Communication</Text>
                         <DropDown
                             name="esops_com"
                             // style={{padding: 5, minWidth: '70%'}}
@@ -170,7 +183,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                     <QuestionHorizontal>
-                        <Text>12. Holding Period </Text>
+                        <Text>Holding Period </Text>
                         <DropDown
                             name="holding"
                             // style={{padding: 5, minWidth: '70%'}}
@@ -183,7 +196,7 @@ const MainForm =  () => {
                         </DropDown>
                     </QuestionHorizontal>
                 </MultiChoiceTowerComponent>
-                <RadioButtonTowerComponent >
+                <RadioButtonTowerComponent>
                     <QuestionVertical>
                         <Text>Is Top-up of Esops defined ?</Text>
                         <MultiOption name="esops_topup" size="large">
@@ -206,7 +219,7 @@ const MainForm =  () => {
                         </MultiOption>
                     </QuestionVertical>
                     <QuestionVertical>
-                        <Text>Is permission required for such a sale?</Text>
+                        <Text>Is permission required the sale?</Text>
                         <MultiOption name="permission" size="large">
                             <MultiOptionButton value={0}>Yes</MultiOptionButton>
                             <MultiOptionButton value={1}> No</MultiOptionButton >
@@ -226,26 +239,9 @@ const MainForm =  () => {
                             <MultiOptionButton value={2}> No</MultiOptionButton >
                         </MultiOption>
                     </QuestionVertical>
-                    <GetScoreButton>Get Score</GetScoreButton>
                 </RadioButtonTowerComponent>
-                <MediaComponent>
-                    {/* <LogoText>Evaluate your company's ESOPs Policy</LogoText> */}
-                    {/* <Text>Share this tool: </Text>
-                    <TwitterShareButton
-                        url={window.location.href}
-                        options={{ text: 'Check out this tool to evaluate ESOP Policies', via: 'beingPractical' }}
-                    /> */}
-                    <Mediatext>What is the basis of this scoring ?</Mediatext>
-                    <TweetContainer>
-                        <TwitterTweetEmbed
-                            tweetId={'1363352214559891456'}
-                            style={{margin:'1'}}
-                        />
-                    </TweetContainer>
-                    {/* <ImageContainer>
-                        <img src={asset}/>
-                    </ImageContainer> */}
-                </MediaComponent>
+                <GetScoreButton>Get Score</GetScoreButton>
+                <MediaComponent />
                 </MainForm>
             </Form>
         </Formik>
